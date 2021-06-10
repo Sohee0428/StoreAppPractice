@@ -4,13 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-<androidx.viewpager.widget.ViewPager
-    android:id="@+id/mainViewPager"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mainViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <fragment
+        class="com.example.storeapppractice.fragments.PizzaStoreFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="pizzaFragment" />
 
 
 </LinearLayout>
