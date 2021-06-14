@@ -23,7 +23,7 @@ class ListViewAdapter(val mContext: Context, val resId: Int, val list: List<Stor
         val data = list[position]
 
         val storeNameTxt = row.findViewById<TextView>(R.id.storeNameTxt)
-        val lodoImg = row.findViewById<ImageView>(R.id.pizzalogoImg)
+        val logoImg = row.findViewById<ImageView>(R.id.pizzalogoImg)
 
         return row
     }

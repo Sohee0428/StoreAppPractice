@@ -16,10 +16,7 @@ class MainActivity : BaseActivity() {
         setupEvents()
         setValues()
 
-        mViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
-        mainViewPager.adapter = mViewPagerAdapter
 
-        tabLayout.setupWithViewPager(mainViewPager)
 
     }
 
@@ -27,5 +24,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+        mViewPagerAdapter = MainViewPagerAdapter(supportFragmentManager)
+        mainViewPager.adapter = mViewPagerAdapter
+
+        tabLayout.setupWithViewPager(mainViewPager)
     }
 }
