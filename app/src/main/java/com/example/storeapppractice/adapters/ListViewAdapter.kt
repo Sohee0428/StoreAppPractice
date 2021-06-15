@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.storeapppractice.R
 import com.example.storeapppractice.datas.Store
 
@@ -24,6 +25,12 @@ class ListViewAdapter(val mContext: Context, val resId: Int, val list: List<Stor
 
         val storeNameTxt = row.findViewById<TextView>(R.id.storeNameTxt)
         val logoImg = row.findViewById<ImageView>(R.id.pizzalogoImg)
+
+        storeNameTxt.text = data.name
+
+        Glide.with(mContext)
+            .load(R.drawable.ic_launcher_background)
+            .into(logoImg)
 
         return row
     }
