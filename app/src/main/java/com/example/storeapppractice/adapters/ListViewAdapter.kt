@@ -19,7 +19,7 @@ class ListViewAdapter(val mContext: Context, val resId: Int, val list: List<Stor
 
         var temp = convertView
 
-        val row = temp?: inflater.inflate(resId, null)
+        val row = temp ?: inflater.inflate(resId, null)
 
         val data = list[position]
 
@@ -29,7 +29,7 @@ class ListViewAdapter(val mContext: Context, val resId: Int, val list: List<Stor
         storeNameTxt.text = data.name
 
         Glide.with(mContext)
-            .load(R.drawable.ic_launcher_background)
+            .load(data.logoURL)
             .into(logoImg)
 
         return row
