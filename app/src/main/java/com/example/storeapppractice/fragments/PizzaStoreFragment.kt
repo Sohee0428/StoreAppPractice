@@ -1,11 +1,13 @@
 package com.example.storeapppractice.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.storeapppractice.R
+import com.example.storeapppractice.StoreDetailActivity
 import com.example.storeapppractice.adapters.ListViewAdapter
 import com.example.storeapppractice.datas.Store
 import kotlinx.android.synthetic.main.fragment_store_pizza.*
@@ -36,6 +38,17 @@ class PizzaStoreFragment : Fragment() {
 
         PizzaListView.adapter = pizzaStoreAdapter
 
+        PizzaListView.setOnItemClickListener { parent, view, position, id ->
+
+            val clickedStore = pizzaStoreDataList[position]
+
+            val myIntent = Intent(requireContext(), StoreDetailActivity::class.java)
+
+            myIntent.putExtra("storeData", clickedStore)
+
+            startActivity(myIntent)
+
+        }
 
     }
 

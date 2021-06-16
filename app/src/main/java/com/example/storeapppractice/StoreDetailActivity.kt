@@ -16,6 +16,8 @@ class StoreDetailActivity : BaseActivity() {
     }
 
     override fun setValues() {
+
+
     }
 
 }
