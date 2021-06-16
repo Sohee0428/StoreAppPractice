@@ -1,11 +1,15 @@
 package com.example.storeapppractice
 
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.storeapppractice.datas.Store
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.activity_store_detail.*
 
 class StoreDetailActivity : BaseActivity() {
@@ -23,9 +27,26 @@ class StoreDetailActivity : BaseActivity() {
 
         callBtn.setOnClickListener {
 
-            val myUri = Uri.parse(" tel: ${storeData.phoneNum}")
-            val myIntent = Intent(Intent.ACTION_CALL, myUri)
-            startActivity(myIntent)
+            val permission = object  : PermissionListener{
+                override fun onPermissionGranted() {
+
+                    val myUri = Uri.parse(" tel: ${storeData.phoneNum}")
+                    val myIntent = Intent(Intent.ACTION_CALL, myUri)
+                    startActivity(myIntent)
+
+                }
+
+                override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                    Toast.makeText(mContext, "전화 연결 권한이 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+            TedPermission.with(mContext)
+                    .setPermissionListener(permission)
+                    .setDeniedMessage("설정에서 권한을 켜주세요.")
+                    .setPermissions(Manifest.permission.CALL_PHONE)
+                    .check()
 
         }
     }
