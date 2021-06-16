@@ -1,5 +1,7 @@
 package com.example.storeapppractice
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
@@ -18,6 +20,14 @@ class StoreDetailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        callBtn.setOnClickListener {
+
+            val myUri = Uri.parse(" tel: ${storeData.phoneNum}")
+            val myIntent = Intent(Intent.ACTION_CALL, myUri)
+            startActivity(myIntent)
+
+        }
     }
 
     override fun setValues() {
